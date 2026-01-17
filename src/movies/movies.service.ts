@@ -191,15 +191,7 @@ export class MoviesService {
     const queryPlan: QueryPlan =
       await this.geminiApiService.getMovieQueryPlan(prompt);
 
-    console.log(JSON.stringify(queryPlan.where, null, 2));
-
     let queryBuilder = this.buildDBQuery(queryPlan);
-    const [sql, parameters] = queryBuilder.getQueryAndParameters();
-    console.log('SQL \n', sql);
-    console.log('SQL paramters:', parameters);
-    console.log('page', Number(page));
-    console.log('limit', Number(limit));
-
     queryBuilder = queryBuilder.skip((page - 1) * limit);
     queryBuilder = queryBuilder.take(limit);
 

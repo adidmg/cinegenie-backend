@@ -24,7 +24,7 @@ export class Movie {
   @Column('varchar', { length: 10 })
   certificate: string;
 
-  @Column()
+  @Column({ type: 'int', nullable: true })
   runtime: number;
 
   @Column('real')
