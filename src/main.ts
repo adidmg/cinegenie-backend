@@ -5,7 +5,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: ['https://cinegenie-frontend.vercel.app/','http://localhost:5173'],
+    origin: ['https://cinegenie-frontend.vercel.app','http://localhost:5173'],
     credentials: true,
   });
 
@@ -14,4 +14,5 @@ async function bootstrap() {
   await app.listen(port, '0.0.0.0');
 }
 bootstrap();
+
 
