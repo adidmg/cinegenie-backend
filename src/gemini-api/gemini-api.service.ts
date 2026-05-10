@@ -84,14 +84,14 @@ export class GeminiApiService {
       ### USER QUERY TO CONVERT ###
       Convert this query into the QueryPlan JSON: "${userQuery}"`;
 
-    const response = await this.geminiClient.models.generateContent({
-      model: 'gemini-3.1-flash-lite',
-      contents: [{ role: 'user', parts: [{ text: prompt }] }],
-      config: {
-        responseMimeType: 'application/json',
-        responseSchema: QUERY_JSON_SCHEMA,
-      },
-    });
+   const response = await this.geminiClient.models.generateContent({
+    model: 'gemini-3.1-flash-lite',
+    contents: [{ role: 'user', parts: [{ text: prompt }] }],
+    generationConfig: {
+      responseMimeType: 'application/json',
+      responseSchema: QUERY_JSON_SCHEMA,
+  },
+});
     return JSON.parse(response.text) as QueryPlan;
   }
 }
