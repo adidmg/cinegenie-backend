@@ -85,7 +85,7 @@ export class GeminiApiService {
       Convert this query into the QueryPlan JSON: "${userQuery}"`;
 
     const response = await this.geminiClient.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-3.1-flash-lite',
       contents: [{ role: 'user', parts: [{ text: prompt }] }],
       config: {
         responseMimeType: 'application/json',
